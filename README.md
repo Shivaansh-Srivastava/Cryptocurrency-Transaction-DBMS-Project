@@ -146,3 +146,174 @@ insert into contract values('CNT07','C01','CL05','CL03');<br>
     <img width="286" alt="image" src="https://user-images.githubusercontent.com/72780341/162260017-9175992d-4157-4fe4-8344-16f78ceba285.png">
    </li>
 </ol>
+
+<h2><strong>Various Commands performed on the Tables:</strong></h2>
+<p>The different types of commands executed on the tables are listed here.</p>
+<ol>
+ <li>
+  <h3><strong>Basic Select Commands:</strong></h3>
+  <ul>
+   <li>
+   select crypto_name,price from crypto;
+    <br>
+    <img width="164" alt="image" src="https://user-images.githubusercontent.com/72780341/162261365-e3f66678-73d5-4d97-bddd-74ef50c398df.png">
+   </li>
+   <li>
+   select * from crypto where volume>100000;
+    <br>
+    <img width="391" alt="image" src="https://user-images.githubusercontent.com/72780341/162261623-289fde82-9ab4-4325-beb4-fd57ae8bf094.png">
+   </li>
+   <li>
+   select cid,crypto_name,price from crypto order by price ASC;
+    <br>
+    <img width="227" alt="image" src="https://user-images.githubusercontent.com/72780341/162261788-1bda0897-debd-40b9-b7bd-30025e1e6da3.png">
+   </li>
+   <li>
+   select com_name as Company from company where com_id='COM02';
+    <br>
+    <img width="91" alt="image" src="https://user-images.githubusercontent.com/72780341/162261913-29abd5d4-1b9e-4621-94c1-5f6d175150bb.png">
+   </li>
+   <li>
+   select cont_id as Contract from contract where buy_id='CL01' and own_id='CL02';
+    <br>
+    <img width="100" alt="image" src="https://user-images.githubusercontent.com/72780341/162262052-f11083d5-e70b-4c1b-9957-d7ce952ecb6f.png">
+   </li>
+   <li>
+   select distinct(cid) from crypto;
+    <br>
+    <img width="74" alt="image" src="https://user-images.githubusercontent.com/72780341/162262184-a2be9a85-7c10-4bcd-8e93-5795320d921f.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Select Commands using In-Built Functions:</strong></h3>
+  <ul>
+   <li>
+   select sum(price) from crypto;
+    <br>
+    <img width="79" alt="image" src="https://user-images.githubusercontent.com/72780341/162262492-af71c2ab-2804-4c58-8c19-50be208357e6.png">
+   </li>
+   <li>
+   select count(*) from client;
+    <br>
+    <img width="66" alt="image" src="https://user-images.githubusercontent.com/72780341/162262644-8a3933e1-2be2-4a51-90d9-b24c55eae1a8.png">
+   </li>
+   <li>
+   select count(*) from reg_org;
+    <br>
+    <img width="76" alt="image" src="https://user-images.githubusercontent.com/72780341/162262803-62cf8244-8831-407c-a676-23a19de7a734.png">
+   </li>
+   <li>
+   select upper(cl_name) from client;
+    <br>
+    <img width="91" alt="image" src="https://user-images.githubusercontent.com/72780341/162262934-8bc830ac-860f-44d1-ab46-69b00303c767.png">
+   </li>
+   <li>
+   select LOWER(cl_name) from client;
+    <br>
+    <img width="92" alt="image" src="https://user-images.githubusercontent.com/72780341/162263087-0c6fbeb8-4216-4400-aa99-ba45853b5e29.png">
+   </li>
+   <li>
+   select round(price,2) from crypto;
+    <br>
+    <img width="89" alt="image" src="https://user-images.githubusercontent.com/72780341/162263280-246f0c62-63e9-4716-9af2-02b5dedb3ac4.png">
+   </li>
+   <li>
+   select max(price) from crypto;
+    <br>
+    <img width="70" alt="image" src="https://user-images.githubusercontent.com/72780341/162263451-751ed9a8-4e6c-4646-9a50-547a0f66974a.png">
+   </li>
+   <li>
+   select min(volume) from crypto;
+    <br>
+    <img width="86" alt="image" src="https://user-images.githubusercontent.com/72780341/162263615-96a77dd1-6f72-465c-8eea-f398fd48e2b1.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Select Commands using Wildcard Characters:</strong></h3>
+  <ul>
+   <li>
+   select reg_name from reg_org where reg_name like 'E%';
+    <br>
+    <img width="96" alt="image" src="https://user-images.githubusercontent.com/72780341/162265523-421e4bce-6bf7-4aea-a619-01634d8d96e3.png">
+   </li>
+   <li>
+   select reg_name from reg_org where reg_name like '__O';
+    <br>
+    <img width="84" alt="image" src="https://user-images.githubusercontent.com/72780341/162265645-43140f38-be51-4be6-bd7b-c04f94f24564.png">
+   </li>
+   <li>
+   select members from reg_org where members like 'India,%';
+    <br>
+    <img width="129" alt="image" src="https://user-images.githubusercontent.com/72780341/162265769-4ea452de-1de0-4314-bffb-7e54449fa2c2.png">
+   </li>
+   <li>
+   select tr_market from traders where tr_market like '%Mexico';
+    <br>
+    <img width="114" alt="image" src="https://user-images.githubusercontent.com/72780341/162265875-23751260-6825-46f8-bccd-3edf9bdedd1e.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Sub-Queries & Nested-Queries:</strong></h3>
+  <ul>
+   <li>
+   select cont_id from contract where crypto_id in (
+    select cid from crypto where cid='C01'
+);
+    <br>
+    <img width="80" alt="image" src="https://user-images.githubusercontent.com/72780341/162266236-d2c4083b-ab15-48b8-b35c-1ac984c866d3.png">
+   </li>
+   <li>
+   select com_name from company where com_reg_id in(
+    select reg_id from reg_org where region in ('Europe','Asia')
+);
+    <br>
+    <img width="76" alt="image" src="https://user-images.githubusercontent.com/72780341/162266343-b4ff41d7-6831-4a97-be56-a13c3c48b1b7.png">
+   </li>
+   <li>
+   select tr_name from traders where tr_reg_id in (
+    select com_reg_id from company where com_reg_id in(
+        select reg_id from reg_org where region in ('North America','Africa','Asia')
+    )
+);
+    <br>
+    <img width="70" alt="image" src="https://user-images.githubusercontent.com/72780341/162266467-724ac322-a9ce-461f-9db0-d152392b23b0.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Set-Operation Commands:</strong></h3>
+  <ul>
+   <li>
+   select reg_id from reg_org union select com_reg_id from company;<br>
+    <img width="59" alt="image" src="https://user-images.githubusercontent.com/72780341/162266741-47199d23-6ea0-4429-b159-e923239171f9.png">
+   </li>
+   <li>
+   select reg_id from reg_org union all select com_reg_id from company;<br>
+    <img width="79" alt="image" src="https://user-images.githubusercontent.com/72780341/162266864-cbaf60f3-91bd-4efa-a2fb-c24513d30ef6.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Views:</strong></h3>
+  <ul>
+   <li>
+   create view view1 as select * from crypto where volume>150000;
+    select * from view1;
+    <br>
+    <img width="403" alt="image" src="https://user-images.githubusercontent.com/72780341/162267179-908bcf61-b635-4596-a0e9-45a79e247a17.png">
+   </li>
+   <li>
+   select crypto_name as Name,volume from view1 where price>18000;<br>
+    <img width="158" alt="image" src="https://user-images.githubusercontent.com/72780341/162267327-f69c9497-0bfc-40d0-bd70-9ef89ed77aed.png">
+   </li>
+   <li>
+   drop view view1;
+    select * from view1;<br>
+    <img width="191" alt="image" src="https://user-images.githubusercontent.com/72780341/162267528-8a189822-b239-4cf2-bebe-aa47103cf7d7.png">
+   </li>
+  </ul>
+ </li>
+</ol>
