@@ -337,4 +337,43 @@ right join traders on platform.plt_trd_id=traders.tr_id;<br><br>
    </li>
   </ul>
  </li>
+ <li>
+ <h3><strong>Triggers:</strong></h3>
+  <ul>
+  <li>
+   create or replace trigger display_reg_org<br>
+   before delete or insert or update on reg_org<br>
+   for each row<br>
+   when (NEW.reg_id > 0)<br>
+   declare<br>
+     region_name varchar(50);<br>
+   begin<br>
+     dbms_output.put_line('Old Region Name: '||:OLD.region);<br>
+     dbms_output.put_line('New Region Name: '||:NEW.region);<br>
+   end;<br>
+   /<br>
+   <br>
+   <img width="83" alt="image" src="https://user-images.githubusercontent.com/72780341/163952281-7f70b89d-d56b-420e-b28d-33cb0cd927da.png">
+   </li>
+  </ul>
+ </li>
+ <li>
+ <h3><strong>Cursors:</strong></h3>
+  <ul>
+   <li>
+   declare<br>
+     total_rows number(3);<br>
+   begin<br>
+     select * from reg_org;<br>
+     if sql%notfound then<br>
+         dbms_output.put_line('No Customers selected');<br>
+     elsif sql%found then<br>
+         total_rows:=sql%rowcount;<br>
+         dbms_output.put_line(total_rows || ' customers selected ');<br>
+     end if;<br>
+    end;<br>
+   /<br>
+   </li>
+  </ul>
+ </li>
 </ol>
